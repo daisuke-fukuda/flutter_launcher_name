@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter_launcher_name/constants.dart' as constants;
 
 /// Updates the line which specifies the launcher label within the AndroidManifest.xml
-/// with the new icon name (only if it has changed)
+/// with the new name (only if it has changed)
 Future<void> overwriteAndroidManifest(String name) async {
   final File androidManifestFile = File(constants.androidManifestFile);
   final List<String> lines = await androidManifestFile.readAsLines();
