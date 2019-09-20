@@ -30,6 +30,9 @@ dev_dependencies:
   flutter_launcher_name:
     path: ../
 
+flutter_launcher_name:
+  name: "newAppName"
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
