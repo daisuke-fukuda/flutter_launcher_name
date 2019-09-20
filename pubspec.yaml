@@ -1,8 +1,8 @@
 name: flutter_launcher_name
-description: A new Flutter package project.
+description: A command-line tool which simplifies the task of updating your Flutter app's launcher name.
 version: 0.0.1
-author:
-homepage:
+author: moyashidaisuke <guitaristdaisuke@gmail.com>
+homepage: https://github.com/daisuke-fukuda/flutter_launcher_name
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
