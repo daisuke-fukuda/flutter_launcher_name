@@ -4,20 +4,30 @@ import 'dart:io';
 
 import 'package:flutter_launcher_name/android.dart' as android;
 import 'package:flutter_launcher_name/constants.dart' as constants;
+import 'package:flutter_launcher_name/constants.dart';
 import 'package:flutter_launcher_name/ios.dart' as ios;
 import 'package:yaml/yaml.dart';
 
-exec() {
-  print('start');
-
-  final config = loadConfigFile();
-
-  final newName = config['name'];
-
-  android.overwriteAndroidManifest(newName);
-  ios.overwriteInfoPlist(newName);
-
-  print('exit');
+exec(String name) {
+  print(startChangeHelpText);
+  try {
+    var execName = name;
+    final config = loadConfigFile();
+    final newName = config['name'];
+    if (newName.length >= 1) {
+      execName = newName;
+    }
+    if (execName.length == 0) {
+      throw new Exception('flutter_launcher_name was not found');
+    }
+    print("Flutter Launcher name change to \"$execName\"");
+    android.overwriteAndroidManifest(execName);
+    ios.overwriteInfoPlist(execName);
+    print(changeSuccessText);
+  } catch (e) {
+    print(changeFailText);
+    print(e);
+  }
 }
 
 Map<String, dynamic> loadConfigFile() {
@@ -26,7 +36,10 @@ Map<String, dynamic> loadConfigFile() {
   final Map yamlMap = loadYaml(yamlString);
 
   if (yamlMap == null || !(yamlMap[constants.yamlKey] is Map)) {
-    throw new Exception('flutter_launcher_name was not found');
+    // throw new Exception('flutter_launcher_name was not found');
+    return <String, dynamic>{
+      "name": ""
+    };
   }
 
   // yamlMap has the type YamlMap, which has several unwanted sideeffects

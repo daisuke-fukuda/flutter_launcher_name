@@ -34,6 +34,17 @@ flutter pub run flutter_launcher_name:main
 ```
 
 
+### Command line parameters
+
+You can try to pass parameters directly after the command to modify your Flutter Launcher name 🌸
+
+```bash
+flutter pub run flutter_launcher_name:main "todoApp"
+```
+
+Of course, the priority of the `yaml` configuration file is higher than this 👀
+
+
 ## :mag: Attributes
 
 Shown below is the full list of attributes which you can specify within your Flutter Launcher name configuration.
