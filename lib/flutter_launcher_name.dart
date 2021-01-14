@@ -8,16 +8,12 @@ import 'package:flutter_launcher_name/ios.dart' as ios;
 import 'package:yaml/yaml.dart';
 
 exec() {
-  print('start');
-
   final config = loadConfigFile();
 
   final newName = config['name'];
 
   android.overwriteAndroidManifest(newName);
   ios.overwriteInfoPlist(newName);
-
-  print('exit');
 }
 
 Map<String, dynamic> loadConfigFile() {
