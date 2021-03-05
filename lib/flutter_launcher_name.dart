@@ -14,6 +14,10 @@ exec() {
 
   final newName = config['name'];
 
+  if (newName == null) {
+    throw new Exception('missing new name under flutter_launcher name');
+  }
+
   android.overwriteAndroidManifest(newName);
   ios.overwriteInfoPlist(newName);
 
@@ -23,7 +27,7 @@ exec() {
 Map<String, dynamic> loadConfigFile() {
   final File file = File('pubspec.yaml');
   final String yamlString = file.readAsStringSync();
-  final Map yamlMap = loadYaml(yamlString);
+  final Map? yamlMap = loadYaml(yamlString);
 
   if (yamlMap == null || !(yamlMap[constants.yamlKey] is Map)) {
     throw new Exception('flutter_launcher_name was not found');
