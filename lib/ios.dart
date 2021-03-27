@@ -4,7 +4,7 @@ import 'package:flutter_launcher_name/constants.dart' as constants;
 
 /// Updates the line which specifies the CFBundleName within the Info.plist
 /// with the new name (only if it has changed)
-Future<void> overwriteInfoPlist(String name) async {
+Future<void> overwriteInfoPlist(String? name) async {
   final File iOSInfoPlistFile = File(constants.iOSInfoPlistFile);
   final List<String> lines = await iOSInfoPlistFile.readAsLines();
 
