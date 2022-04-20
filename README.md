@@ -36,7 +36,7 @@ flutter pub run flutter_launcher_name:main
 If you provide your own yaml file run:
 ```
 flutter pub get
-flutter pub run flutter_launcher_name:main --file=path/to/your/yaml
+flutter pub run flutter_launcher_name:main -f path/to/your/yaml
 ```
 
 
