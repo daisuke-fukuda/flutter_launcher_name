@@ -16,7 +16,7 @@ or create your own .yaml. An example is shown below.
 
 ```yaml
 dev_dependencies: 
-  flutter_launcher_name: "^0.0.1"
+  flutter_launcher_name: "^0.0.3"
   
 flutter_launcher_name:
   name: "yourNewAppLauncherName"
