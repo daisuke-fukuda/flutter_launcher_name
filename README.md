@@ -11,8 +11,8 @@ If you user this package, You don't need modify AndroidManifest.xml or Info.plis
 
 #### 1. Setup the config file
 
-Add your Flutter Launcher name configuration to your `pubspec.yaml`.
-An example is shown below.
+Add your Flutter Launcher name configuration to your `pubspec.yaml` 
+or create your own .yaml. An example is shown below.
 
 ```yaml
 dev_dependencies: 
@@ -31,6 +31,12 @@ After setting up the configuration, all that is left to do is run the package.
 ```
 flutter pub get
 flutter pub run flutter_launcher_name:main
+```
+
+If you provide your own yaml file run:
+```
+flutter pub get
+flutter pub run flutter_launcher_name:main --file=path/to/your/yaml
 ```
 
 

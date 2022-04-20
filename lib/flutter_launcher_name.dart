@@ -2,15 +2,32 @@ library flutter_launcher_name;
 
 import 'dart:io';
 
+import 'package:args/args.dart';
 import 'package:flutter_launcher_name/android.dart' as android;
 import 'package:flutter_launcher_name/constants.dart' as constants;
 import 'package:flutter_launcher_name/ios.dart' as ios;
 import 'package:yaml/yaml.dart';
 
-exec() {
+const String helpFlag = 'help';
+const String fileOption = 'file';
+
+exec(List<String> arguments) {
   print('start');
 
-  final config = loadConfigFile();
+  final ArgParser parser = ArgParser(allowTrailingOptions: true);
+  parser.addFlag(helpFlag, abbr: 'h', help: 'Usage help', negatable: false);
+  parser.addOption(fileOption,
+      abbr: 'f', help: 'Config file to read (default: pubspec.yaml)');
+
+  final ArgResults argResults = parser.parse(arguments);
+
+  if (argResults[helpFlag]) {
+    stdout.writeln('Rename your app to your desired name.');
+    stdout.writeln(parser.usage);
+    exit(0);
+  }
+
+  final config = loadConfigFile(argResults);
 
   final newName = config['name'];
 
@@ -20,8 +37,10 @@ exec() {
   print('exit');
 }
 
-Map<String, dynamic> loadConfigFile() {
-  final File file = File('pubspec.yaml');
+Map<String, dynamic> loadConfigFile(ArgResults argResults) {
+  final String fileName = argResults[fileOption] ?? 'pubspec.yaml';
+
+  final File file = File(fileName);
   final String yamlString = file.readAsStringSync();
   final Map yamlMap = loadYaml(yamlString);
 
