@@ -16,7 +16,7 @@ or create your own .yaml. An example is shown below.
 
 ```yaml
 dev_dependencies: 
-  flutter_launcher_name: "^0.0.1"
+  flutter_launcher_name: "^0.0.3"
   
 flutter_launcher_name:
   name: "yourNewAppLauncherName"
@@ -36,7 +36,7 @@ flutter pub run flutter_launcher_name:main
 If you provide your own yaml file run:
 ```
 flutter pub get
-flutter pub run flutter_launcher_name:main --file=path/to/your/yaml
+flutter pub run flutter_launcher_name:main -f path/to/your/yaml
 ```
 
 
