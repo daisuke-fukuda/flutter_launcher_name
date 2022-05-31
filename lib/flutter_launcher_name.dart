@@ -3,6 +3,7 @@ library flutter_launcher_name;
 import 'dart:io';
 
 import 'package:args/args.dart';
+import 'package:change_app_package_name/android_rename_steps.dart';
 import 'package:flutter_launcher_name/android.dart' as android;
 import 'package:flutter_launcher_name/constants.dart' as constants;
 import 'package:flutter_launcher_name/ios.dart' as ios;
@@ -31,8 +32,15 @@ exec(List<String> arguments) {
 
   final newName = config['name'];
 
+  print('Change name to $newName');
   android.overwriteAndroidManifest(newName);
   ios.overwriteInfoPlist(newName);
+
+  final bundleId = config['bundleId'];
+  if (bundleId != null) {
+    print('Change bundleId to $bundleId');
+    AndroidRenameSteps(arguments[0]).process();
+  }
 
   print('exit');
 }
