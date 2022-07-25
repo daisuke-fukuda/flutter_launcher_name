@@ -8,16 +8,20 @@ import 'package:flutter_launcher_name/ios.dart' as ios;
 import 'package:yaml/yaml.dart';
 
 exec() {
-  print('start');
+  print('════════════════════════════════════════════');
+  print("            FLUTTER LAUNCHER NAME           ");
+  print('════════════════════════════════════════════');
 
   final config = loadConfigFile();
 
   final newName = config['name'];
 
+  print('- Overwriting app name Android');
   android.overwriteAndroidManifest(newName);
+  print('- Overwriting app name Android');
   ios.overwriteInfoPlist(newName);
 
-  print('exit');
+  print('Successfully generated app name');
 }
 
 Map<String, dynamic> loadConfigFile() {
